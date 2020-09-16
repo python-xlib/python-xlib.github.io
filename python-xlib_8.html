@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 4.2 CatchError</title>
+
+<meta name="description" content="The Python X Library: 4.2 CatchError">
+<meta name="keywords" content="The Python X Library: 4.2 CatchError">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="CatchError"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_6.html#Error-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_7.html#X-Error-Classes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_6.html#Error-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="CatchError-1"></a>
+<h2 class="section">4.2 CatchError</h2>
+
+<p><code>error.CatchError</code> is an object which can be used as an error
+handler.  It collects an error matching any of the specified types,
+which can be retrieved later.  If several errors occur, only the last
+one is remembered.
+</p>
+
+<dl>
+<dt><a name="index-CatchError"></a>Class: <strong>CatchError</strong><em> ( *errors )</em></dt>
+<dd>
+<p>Create a new error handler object.  Initialize by providing all error
+classes you are interested in as arguments.  If no error classes are
+provided at all, this means that all errors will be considered.
+</p>
+</dd></dl>
+
+
+<p>Pass the <code>error.CatchError</code> object as the <code>onerror</code> parameter
+to X object methods.  If these methods generated any errors matching the
+ones specified, it can be retrieved with the following functions:
+</p>
+<dl>
+<dt><a name="index-get_005ferror-on-CatchError"></a>Method on CatchError: <strong>get_error</strong><em> ( )</em></dt>
+<dd>
+<p>Return the last error object caught, or None if no matching errors has
+occured.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-get_005frequest-on-CatchError"></a>Method on CatchError: <strong>get_request</strong><em> ( )</em></dt>
+<dd>
+<p>Return the request object for the last error caught, or None if no
+matching errors has occured.
+</p>
+</dd></dl>
+
+<p><code>error.CatchError</code> objects can be reused:
+</p>
+<dl>
+<dt><a name="index-reset-on-CatchError"></a>Method on CatchError: <strong>reset</strong><em> ( )</em></dt>
+<dd>
+<p>Forget any caught error.
+</p>
+</dd></dl>
+
+
+<p>Since the X protocol is mostly asynchronous any error we&rsquo;re watching for
+might not have been received when we call <code>get_error</code>.  To make
+sure that the request has been processed by the server and any error
+generated has been received by the Xlib, we must synchronize with the
+server.
+</p>
+<p>An example of using <code>error.CatchError</code>:
+</p>
+<div class="example">
+<pre class="example"># Resize and the foo window
+# If it has been destroyed since we looked at it the last time,
+# reset variable foo to None
+
+# Create a error handler for BadWindow errors
+ec = error.CatchError(error.BadWindow)
+
+# Perform the operation
+foo.configure(width = 100, height = 200, onerror = ec)
+
+# Sync communication with server
+display.sync()
+
+# And check if there was any error
+if ec.get_error():
+    foo = None
+</pre></div>
+
+               
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_6.html#Error-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_7.html#X-Error-Classes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_6.html#Error-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

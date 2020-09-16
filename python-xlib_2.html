@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 2 Package Layout</title>
+
+<meta name="description" content="The Python X Library: 2 Package Layout">
+<meta name="keywords" content="The Python X Library: 2 Package Layout">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Package-Layout"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_3.html#Connect-to-a-Display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_3.html#Connect-to-a-Display" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Package-Layout-1"></a>
+<h1 class="chapter">2 Package Layout</h1>
+
+<p>The Python X Library is distributed as a Python package, named
+<code>Xlib</code>.  It contains a number of modules providing the main
+library interface:
+</p>
+<dl compact="compact">
+<dt><code>display</code></dt>
+<dd>
+<p>Contains the <code>Display</code> class, providing the X connection and access
+to all other X objects and operations.
+</p>
+</dd>
+<dt><code>error</code></dt>
+<dd>
+<p>Contains all <code>Xlib</code> exception classes.
+</p>
+</dd>
+<dt><code>threaded</code></dt>
+<dd>
+<p>Imported to set up the library to be thread-safe.
+</p>
+</dd>
+<dt><code>rdb</code></dt>
+<dd>
+<p>Contains <code>ResourceDB</code>, an X resource database class, and related
+code.
+</p>
+</dd>
+<dt><code>X</code></dt>
+<dd>
+<p>Contains symbolic names for all basic X protocol constants.
+</p>
+</dd>
+<dt><code>Xutil</code></dt>
+<dd>
+<p>Contains additional constants for mainly the ICCCM standard.
+</p>
+</dd>
+<dt><code>XK</code></dt>
+<dd>
+<p>Contains symbolic names for all X keysyms.
+</p>
+</dd>
+<dt><code>Xatom</code></dt>
+<dd>
+<p>Contains symbolic names for all standard X atoms.
+</p>
+</dd>
+<dt><code>Xcursorfont</code></dt>
+<dd>
+<p>Contains symbolic names for all standard X fonts.
+</p>
+</dd>
+</dl>
+
+
+<p>There is also a number of subpackages, but they will mainly be of
+interest to developers of the Xlib itself:
+</p>
+<dl compact="compact">
+<dt><code>protocol</code></dt>
+<dd>
+<p>The low-level protocol implementation.  Contains definitions of all X
+request, responses, events and errors, in addition to the core network
+code.  The high-level object oriented interface provided by
+<code>Xlib.display</code> is merely a wrapper around this package.
+</p>
+</dd>
+<dt><code>support</code></dt>
+<dd>
+<p>Miscellaneous supporting code for handling threads and operating
+system-specific features.
+</p>
+</dd>
+<dt><code>xobject</code></dt>
+<dd>
+<p>Contains classes for all X objects, which are returned by various
+display operations.
+</p>
+</dd>
+<dt><code>ext</code></dt>
+<dd>
+<p>Contains various X protocol extensions.  Extensions supported by the
+server are loaded automatically at the display connection.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_3.html#Connect-to-a-Display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_3.html#Connect-to-a-Display" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
