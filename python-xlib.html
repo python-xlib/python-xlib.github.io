@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: Introduction</title>
+
+<meta name="description" content="The Python X Library: Introduction">
+<meta name="keywords" content="The Python X Library: Introduction">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1>The Python X Library</h1>
+<strong>Peter Liljenberg</strong><br>
+
+
+<p>Copyright &copy; 2000&ndash;2001 Peter Liljenberg
+</p>
+<p>Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+</p>
+<p>Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled &ldquo;Copying&rdquo; and &ldquo;GNU General Public License&rdquo;
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+</p>
+<p>Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.
+</p><hr>
+<a name="Top"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[ &lt; ]</td>
+<td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Introduction"></a>
+<h1 class="top">Introduction</h1>
+
+<p>The Python X Library is a complete library for writing X Windows client
+applications in Python.  It implements the entire X11R6 protocol and
+some extensions, and also some supplementary functionality such as a
+resource database.  It is written entirely in Python, and is therefore
+entirely independent of the traditional C Xlib; it only requires a
+Python installation with network support.
+</p>
+<p>Although the X11R6 protocol is the basis of all X client applications,
+it is a little too low-level to be useful for writing advanced graphical
+interfaces.  To this end, many different widget sets has been developed,
+a few of the more popular are Motif, Qt and Gtk.  The Python X Library
+is not compatible with any of these, as they are based on the C Xlib.
+As a result the Python X Library isn&rsquo;t in itself very useful for writing
+GUIs, but is eminent for writing small X applications with no advanced
+GUI, e.g. simple monitor programs, or for that matter more advanced
+background applications such as window managers.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="python-xlib_1.html#Basic-X-Concepts">1 Basic X Concepts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      The fundamental X Windows concepts.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_2.html#Package-Layout">2 Package Layout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        The layout of the Python Xlib package.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_3.html#Connect-to-a-Display">3 Connect to a Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Connecting to a X server display.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_6.html#Error-Handling">4 Error Handling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Handling X errors.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_9.html#Event-Handling">5 Event Handling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Handling X events.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_14.html#X-Objects">6 X Objects</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             X objects and their operations.
+</td></tr>
+</table>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[ &lt; ]</td>
+<td valign="middle" align="left">[<a href="python-xlib_1.html#Basic-X-Concepts" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

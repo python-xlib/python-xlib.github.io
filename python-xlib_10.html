@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 5.1 Getting Events</title>
+
+<meta name="description" content="The Python X Library: 5.1 Getting Events">
+<meta name="keywords" content="The Python X Library: 5.1 Getting Events">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Getting-Events"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_11.html#Selecting-Events" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Getting-Events-1"></a>
+<h2 class="section">5.1 Getting Events</h2>
+
+<p>Events can be sent at any time, not necessarily when the client is ready
+to receive an event. Therefore they must be stored temporarily from that
+they are read from the network until the client is ready to handle them.
+Read but unhandled events are stored on an event queue in the Display
+object.  There are two functions to access this queue:
+</p>
+<dl>
+<dt><a name="index-next_005fevent-on-Display"></a>Method on Display: <strong>next_event</strong><em> ( )</em></dt>
+<dd>
+<p>Return the next event in the event queue.  If the event queue is empty,
+block until an event is read from the network, and return that one.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-pending_005fevents-on-Display"></a>Method on Display: <strong>pending_events</strong><em> ( )</em></dt>
+<dd>
+<p>Return the number of events which can be returned without blocking.
+</p>
+</dd></dl>
+
+
+<p>A trivial event loop would simply loop infinitely, waiting for an
+event and then handling it.  It could look like this:
+</p>
+<div class="example">
+<pre class="example">while 1:
+   event = disp.next_event()
+   handle_event(event)
+</pre></div>
+
+
+<p>However, most applications need more control, e.g. to simultaneously
+handle a network connection or at regular intervals schedule timeouts.
+The module <code>select</code> is often used for this.  <code>Display</code> objects
+can be used with <code>select</code>, since they have the required
+<code>fileno()</code> method.  When <code>select</code> indicates that a
+<code>Display</code> object is ready for reading, that means that the server
+has sent some data to the client.  That alone doesn&rsquo;t guarantee that an
+entire event has arrived, so one must first use <code>pending_events()</code>
+to make sure that <code>next_event()</code> will return without blocking.  A
+simple event loop which waits for events or a one-second timeout looks
+like this:
+</p>
+<div class="example">
+<pre class="example">while 1:
+    # Wait for display to send something, or a timeout of one second
+    readable, w, e = select.select([disp], [], [], 1)
+
+    # if no files are ready to be read, it's an timeout
+    if not readable:
+        handle_timeout()
+
+    # if display is readable, handle as many events as have been received
+    elif disp in readable:
+        i = disp.pending_events()
+        while i &gt; 0:
+            event = disp.next_event()
+            handle_event(event)
+            i = i - 1
+
+    # loop around to wait for more things to happen
+</pre></div>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_11.html#Selecting-Events" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

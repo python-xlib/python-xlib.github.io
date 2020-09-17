@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 5 Event Handling</title>
+
+<meta name="description" content="The Python X Library: 5 Event Handling">
+<meta name="keywords" content="The Python X Library: 5 Event Handling">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Event-Handling"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_6.html#Error-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_8.html#CatchError" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_10.html#Getting-Events" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Event-Handling-1"></a>
+<h1 class="chapter">5 Event Handling</h1>
+
+<p>Events are sent from the X server to the X client.  Most of the event
+types deal with user input, but there are also event types used for
+inter-client communication.
+</p>
+<p>Most X applications are built around an event loop, where the client
+waits for the server to send events.  The client responds to the events,
+typically by doing one or more X requests.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="python-xlib_10.html#Getting-Events">5.1 Getting Events</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Waiting for events.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_11.html#Selecting-Events">5.2 Selecting Events</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Selecting interesting events.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_12.html#Event-Types">5.3 Event Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Details on all event types.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_13.html#Sending-Events">5.4 Sending Events</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Clients sending events to other clients.
+</td></tr>
+</table>
+
+
+<hr>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

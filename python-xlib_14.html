@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 6 X Objects</title>
+
+<meta name="description" content="The Python X Library: 6 X Objects">
+<meta name="keywords" content="The Python X Library: 6 X Objects">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="X-Objects"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_13.html#Sending-Events" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_15.html#Display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="X-Objects-1"></a>
+<h1 class="chapter">6 X Objects</h1>
+
+<p>All X operations are performed by invoking object methods.
+</p>
+<p>The objects and their methods are listed in the following nodes, however
+with no detailed explanations.  The reader are referred to other sources
+of X documentation for details, e.g. the X protocol specification, the C
+Xlib documentation or man pages.  A vast collection of X documentation
+links can be found at <a href="http://www.rahul.net/kenton/xsites.html">http://www.rahul.net/kenton/xsites.html</a>.
+</p>
+<p>Methods returning a single value will return that directly.  Otherwise,
+an object containing attributes for each of the result values is
+returned.
+</p>
+<p>Methods returning some value will raise an exception on error.  Methods
+which does not return any value have instead an <code>on_error</code>
+parameter, which can be used to specify an error handler.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="python-xlib_15.html#Display">6.1 Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Methods on Display objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_16.html#Resource">6.2 Resource</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Methods common to all the following resource objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_17.html#Colormap">6.3 Colormap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Methods on Colormap objects. 
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_18.html#Cursor">6.4 Cursor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Methods on Cursor objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_19.html#Drawable">6.5 Drawable</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Methods common to Window and Pixmap objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_20.html#Window">6.6 Window</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Methods on Window objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_21.html#Pixmap">6.7 Pixmap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Methods on Pixmap objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_22.html#Fontable">6.8 Fontable</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Methods common to GC and Font objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_23.html#GC">6.9 GC</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Methods on GC objects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="python-xlib_24.html#Font">6.10 Font</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Methods on Font objects.
+</td></tr>
+</table>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_13.html#Sending-Events" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_15.html#Display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

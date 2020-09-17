@@ -1,0 +1,957 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 6.1 Display</title>
+
+<meta name="description" content="The Python X Library: 6.1 Display">
+<meta name="keywords" content="The Python X Library: 6.1 Display">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Display"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_16.html#Resource" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Display-1"></a>
+<h2 class="section">6.1 Display</h2>
+
+<p>Display information retrieval methods:
+</p>
+<dl>
+<dt><a name="index-get_005fdisplay_005fname-on-Display"></a>Method on Display: <strong>get_display_name</strong><em> ( )</em></dt>
+<dd>
+<p>Returns the name used to connect to the server, either provided when
+creating the <code>Display</code> object, or fetched from the environmental
+variable <code>$DISPLAY</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-fileno-on-Display"></a>Method on Display: <strong>fileno</strong><em> ( )</em></dt>
+<dd>
+<p>Returns the file descriptor number of the underlying socket.  This
+method is provided to allow <code>Display</code> objects to be passed
+<code>select.select()</code>.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-close-on-Display"></a>Method on Display: <strong>close</strong><em> ( )</em></dt>
+<dd>
+<p>Close the display, freeing the resources that it holds.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-set_005ferror_005fhandler-on-Display"></a>Method on Display: <strong>set_error_handler</strong><em> ( handler )</em></dt>
+<dd>
+<p>Set the default error handler which will be called for all unhandled
+errors.  <var>handler</var> should take two arguments as a normal request
+error handler, but the second argument (the request) will be None.
+</p>
+<p>See section <a href="python-xlib_6.html#Error-Handling">Error Handling</a>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-flush-on-Display"></a>Method on Display: <strong>flush</strong><em> ( )</em></dt>
+<dd>
+<p>Flush the request queue, building and sending the queued requests.  This
+can be necessary in applications that never wait for events, and in
+threaded applications.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-sync-on-Display"></a>Method on Display: <strong>sync</strong><em> ( )</em></dt>
+<dd>
+<p>Flush the queue and wait until the server has processed all the queued
+requests.  Use this e.g. when it is important that errors caused by a
+certain request is trapped.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-next_005fevent-on-Display-1"></a>Method on Display: <strong>next_event</strong><em> ( )</em></dt>
+<dd>
+<p>Return the next event.  If there are no events queued, it will block
+until the next event is fetched from the server.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-pending_005fevents-on-Display-1"></a>Method on Display: <strong>pending_events</strong><em> ( )</em></dt>
+<dd>
+<p>Return the number of events queued, i.e. the number of times that
+<code>Display.next_event()</code> can be called without blocking.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-has_005fextension-on-Display"></a>Method on Display: <strong>has_extension</strong><em> ( extension )</em></dt>
+<dd>
+<p>Check if both the server and the client library support the X extension
+named <var>extension</var>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-create_005fresource_005fobject-on-Display"></a>Method on Display: <strong>create_resource_object</strong><em> ( type, id )</em></dt>
+<dd>
+<p>Create a resource object of <var>type</var> for the integer <var>id</var>.
+<var>type</var> should be one of the following strings:
+</p>
+<dl compact="compact">
+<dt><code>resource</code></dt>
+<dt><code>drawable</code></dt>
+<dt><code>window</code></dt>
+<dt><code>pixmap</code></dt>
+<dt><code>fontable</code></dt>
+<dt><code>font</code></dt>
+<dt><code>gc</code></dt>
+<dt><code>colormap</code></dt>
+<dt><code>cursor</code></dt>
+</dl>
+
+<p>This function can be used when a resource ID has been fetched e.g. from
+an resource or a command line argument.  Resource objects should never
+be created by instantiating the appropriate class directly, since any X
+extensions dynamically added by the library will not be available.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-screen-on-Display"></a>Method on Display: <strong>screen</strong><em> ( sno = None )</em></dt>
+<dd>
+<p>Return the information about screen number <var>sno</var>, or the default
+screen if <var>sno</var> is <code>None</code>.
+</p>
+<p>The return object has the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>root</code></dt>
+<dd><p>The screen root window.
+</p>
+</dd>
+<dt><code>default_colormap</code></dt>
+<dd><p>The default colormap for the root window and its children.
+</p>
+</dd>
+<dt><code>white_pixel</code></dt>
+<dt><code>black_pixel</code></dt>
+<dd><p>The pixel values for white and black, respectively, in the default
+colormap.
+</p>
+</dd>
+<dt><code>current_input_mask</code></dt>
+<dd><p>The event mask of the root window at the time the connection was set up.
+</p>
+</dd>
+<dt><code>width_in_pixels</code></dt>
+<dt><code>height_in_pixels</code></dt>
+<dd><p>The size of the root window in pixels, i.e. the size of the entire screen.
+</p>
+</dd>
+<dt><code>width_in_mms</code></dt>
+<dt><code>height_in_mms</code></dt>
+<dd><p>The physical size of the screen, in millimeters.
+</p>
+</dd>
+<dt><code>min_installed_maps</code></dt>
+<dt><code>max_installed_maps</code></dt>
+<dd><p>The minimum and maximum number of colormaps that can be installed at the
+same time.
+</p>
+</dd>
+<dt><code>root_visual</code></dt>
+<dd><p>The visual type of the root window.
+</p>
+</dd>
+<dt><code>backing_store</code></dt>
+<dd><p>Whether the screen supports backing store, one of the values
+<code>X.WhenMapped</code>, <code>X.NotUseful</code>, or <code>X.Always</code>.
+</p>
+</dd>
+<dt><code>save_unders</code></dt>
+<dd><p>True if the screen supports save unders.
+</p>
+</dd>
+<dt><code>root_depth</code></dt>
+<dd><p>The depth of the root window.
+</p>
+</dd>
+<dt><code>allowed_depths</code></dt>
+<dd>
+<p>A list of the pixmap and windows depths that this screen supports.  The
+list items have the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>depth</code></dt>
+<dd><p>This depth is supported by the screen.
+</p>
+</dd>
+<dt><code>visuals</code></dt>
+<dd><p>A list of visual types that is valid for this depth.  If this list is
+empty, this depth is only valid for pixmaps and not for windows.  The
+list items have the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>visual_id</code></dt>
+<dd><p>The ID of this visual.
+</p>
+</dd>
+<dt><code>visual_class</code></dt>
+<dd><p>One of <code>X.StaticGray</code>, <code>X.StaticColor</code>, <code>X.TrueColor</code>,
+<code>X.GrayScale</code>, <code>X.PseudoColor</code>, or <code>X.DirectColor</code>.
+</p>
+</dd>
+<dt><code>bits_per_rgb_value</code></dt>
+<dd><p>The number of bits used to represent an entire RGB-value, allowing a
+total of <code>2^bits_per_rgb_value</code> distinct colors.
+</p>
+</dd>
+<dt><code>colormap_entries</code></dt>
+<dd><p>The number of free entries in a newly created colormap.
+</p>
+</dd>
+<dt><code>red_mask</code></dt>
+<dt><code>blue_mask</code></dt>
+<dt><code>green_mask</code></dt>
+<dd>
+<p>Bitmasks selecting the three color components from the entire RGB value.
+</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-screen_005fcount-on-Display"></a>Method on Display: <strong>screen_count</strong><em> ( )</em></dt>
+<dd>
+<p>Return the total number of screens on the display.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-get_005fdefault_005fscreen-on-Display"></a>Method on Display: <strong>get_default_screen</strong><em> ( )</em></dt>
+<dd>
+<p>Return the number of the default screen, extracted from the display
+name.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-keycode_005fto_005fkeysym-on-Display"></a>Method on Display: <strong>keycode_to_keysym</strong><em> ( keycode, index )</em></dt>
+<dd>
+<p>Convert a <var>keycode</var> to a keysym, looking in entry <var>index</var>.
+Normally index 0 is unshifted, 1 is shifted, 2 is alt grid, and 3 is
+shift+alt grid.  If that key entry is not bound, <code>X.NoSymbol</code> is
+returned.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-keysym_005fto_005fkeycode-on-Display"></a>Method on Display: <strong>keysym_to_keycode</strong><em> ( keysym )</em></dt>
+<dd>
+<p>Look up the primary keycode that is bound to <var>keysym</var>.  If several
+keycodes are found, the one with the lowest index and lowest code is
+returned.  If <var>keysym</var> is not bound to any key, 0 is returned.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-keysym_005fto_005fkeycodes-on-Display"></a>Method on Display: <strong>keysym_to_keycodes</strong><em> ( keysym )</em></dt>
+<dd>
+<p>Look up all the keycodes that is bound to <code>keysym</code>.  A list of
+tuples <code>(keycode, index)</code> is returned, sorted primarily on the
+lowest index and secondarily on the lowest keycode.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-refresh_005fkeyboard_005fmapping-on-Display"></a>Method on Display: <strong>refresh_keyboard_mapping</strong><em> ( evt )</em></dt>
+<dd>
+<p>This method should be called once when a <code>MappingNotify</code> event is
+received, to update the keymap cache.  <var>evt</var> should be the event
+object.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-lookup_005fstring-on-Display"></a>Method on Display: <strong>lookup_string</strong><em> ( keysym )</em></dt>
+<dd>
+<p>Attempt to convert <var>keysym</var> into a single character or a string.  If
+no translation is found, <code>None</code> is returned.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-rebind_005fstring-on-Display"></a>Method on Display: <strong>rebind_string</strong><em> ( keysym, newstring )</em></dt>
+<dd>
+<p>Set the string representation of <code>keysym</code> to <code>newstring</code>, so
+that it will be returned by <code>Display.lookup_string()</code>.
+</p>
+</dd></dl>
+
+
+<p>X requests methods:
+</p>
+<dl>
+<dt><a name="index-intern_005fatom-on-Display"></a>Method on Display: <strong>intern_atom</strong><em> ( name, only_if_exists = 0 )</em></dt>
+<dd>
+<p>Intern the string <var>name</var>, returning its atom number.  If
+<var>only_if_exists</var> is true and the atom does not already exist,
+it will not be created and <code>X.NONE</code> is returned.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fatom_005fname-on-Display"></a>Method on Display: <strong>get_atom_name</strong><em> ( atom )</em></dt>
+<dd>
+<p>Look up the name of <var>atom</var>, returning it as a string.  Will raise
+<code>BadAtom</code> if <var>atom</var> does not exist.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fselection_005fowner-on-Display"></a>Method on Display: <strong>get_selection_owner</strong><em> ( selection )</em></dt>
+<dd>
+<p>Return the window that owns <var>selection</var> (an atom), or <code>X.NONE</code>
+if there is no owner for the selection.  Can raise <code>BadAtom</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-send_005fevent-on-Display-1"></a>Method on Display: <strong>send_event</strong><em> ( destination, event, <span class="nolinebreak">event_mask</span>&nbsp;=&nbsp;0, propagate&nbsp;=&nbsp;0, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Send a synthetic event to the window <code>destination</code> which can be a
+window object, or <code>X.PointerWindow</code> or <code>X.InputFocus</code>.
+<code>event</code> is the event object to send, instantiated from one of the
+classes in <code>protocol.events</code>.  See XSendEvent(3X11) for details.
+</p>
+<p>There is also a <code>Window.send_event()</code> method.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-ungrab_005fpointer-on-Display"></a>Method on Display: <strong>ungrab_pointer</strong><em> ( time, onerror = None )</em></dt>
+<dd>
+<p>Release a grabbed pointer and any queued events.  See
+XUngrabPointer(3X11).
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-change_005factive_005fpointer_005fgrab-on-Display"></a>Method on Display: <strong>change_active_pointer_grab</strong><em> ( event_mask, cursor, time, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Change the dynamic parameters of a pointer grab.  See
+XChangeActivePointerGrab(3X11).
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-ungrab_005fkeyboard-on-Display"></a>Method on Display: <strong>ungrab_keyboard</strong><em> ( time, onerror = None )</em></dt>
+<dd>
+<p>Ungrab a grabbed keyboard and any queued events.  See
+XUngrabKeyboard(3X11).
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-allow_005fevents-on-Display"></a>Method on Display: <strong>allow_events</strong><em> ( mode, time, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Release some queued events.  <var>mode</var> should be one of
+<code>X.AsyncPointer</code>, <code>X.SyncPointer</code>, <code>X.AsyncKeyboard</code>,
+<code>X.SyncKeyboard</code>, <code>X.ReplayPointer</code>, <code>X.ReplayKeyboard</code>,
+<code>X.AsyncBoth</code>, or <code>X.SyncBoth</code>.  <var>time</var> should be a
+timestamp or <code>X.CurrentTime</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-grab_005fserver-on-Display"></a>Method on Display: <strong>grab_server</strong><em> ( onerror = None )</em></dt>
+<dd>
+<p>Disable processing of requests on all other client connections until the
+server is ungrabbed.  Server grabbing should be avoided as much as
+possible.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-ungrab_005fserver-on-Display"></a>Method on Display: <strong>ungrab_server</strong><em> ( onerror = None )</em></dt>
+<dd>
+<p>Release the server if it was previously grabbed by this client.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-warp_005fpointer-on-Display"></a>Method on Display: <strong>warp_pointer</strong><em> ( x, y, <span class="nolinebreak">src_window</span>&nbsp;=&nbsp;X.NONE, <span class="nolinebreak">src_x</span>&nbsp;=&nbsp;0, <span class="nolinebreak">src_y</span>&nbsp;=&nbsp;0, <span class="nolinebreak">src_width</span>&nbsp;=&nbsp;0, <span class="nolinebreak">src_height</span>&nbsp;=&nbsp;0, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Move the pointer relative its current position by the offsets
+(<var>x</var>, <var>y</var>).  However, if <var>src_window</var> is a window the
+pointer is only moved if the specified rectangle in <var>src_window</var>
+contains it.  If <var>src_width</var> is 0 it will be replaced with the width
+of <var>src_window</var> - <var>src_x</var>.  <var>src_height</var> is treated in a
+similar way.
+</p>
+<p>To move the pointer to absolute coordinates, use
+<code>Window.warp_pointer()</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005finput_005ffocus-on-Display"></a>Method on Display: <strong>set_input_focus</strong><em> ( focus, revert_to, time, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Set input focus to <var>focus</var>, which should be a window,
+<code>X.PointerRoot</code> or <code>X.NONE</code>.  <var>revert_to</var> specifies where
+the focus reverts to if the focused window becomes not visible, and
+should be <code>X.RevertToParent</code>, <code>RevertToPointerRoot</code>, or
+<code>RevertToNone</code>.  See XSetInputFocus(3X11) for details.
+</p>
+<p>There is also a <code>Window.set_input_focus()</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005finput_005ffocus-on-Display"></a>Method on Display: <strong>get_input_focus</strong><em> ( )</em></dt>
+<dd>
+<p>Return an object with the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>focus</code></dt>
+<dd><p>The window which currently holds the input focus, <code>X.NONE</code> or
+<code>X.PointerRoot</code>. 
+</p>
+</dd>
+<dt><code>revert_to</code></dt>
+<dd><p>Where the focus will revert, one of <code>X.RevertToParent</code>,
+<code>RevertToPointerRoot</code>, or <code>RevertToNone</code>.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-query_005fkeymap-on-Display"></a>Method on Display: <strong>query_keymap</strong><em> ( )</em></dt>
+<dd>
+<p>Return a bit vector for the logical state of the keyboard, where each
+bit set to 1 indicates that the corresponding key is currently pressed
+down.  The vector is represented as a list of 32 integers.  List item N
+contains the bits for keys 8N to 8N + 7 with the least significant bit
+in the byte representing key 8N.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-open_005ffont-on-Display"></a>Method on Display: <strong>open_font</strong><em> ( name )</em></dt>
+<dd>
+<p>Open the font identifed by the pattern <var>name</var> and return its font
+object.  If <var>name</var> does not match any font, <code>None</code> is returned.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-list_005ffonts-on-Display"></a>Method on Display: <strong>list_fonts</strong><em> ( pattern, max_names )</em></dt>
+<dd>
+<p>Return a list of font names matching <var>pattern</var>.  No more than
+<var>max_names</var> will be returned.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-list_005ffonts_005fwith_005finfo-on-Display"></a>Method on Display: <strong>list_fonts_with_info</strong><em> ( pattern, max_names )</em></dt>
+<dd>
+<p>Return a list of fonts matching <var>pattern</var>.  No more than
+<var>max_names</var> will be returned.  Each list item represents one font
+and has the following properties:
+</p>
+<dl compact="compact">
+<dt><code>name</code></dt>
+<dd><p>The name of the font.
+</p>
+</dd>
+<dt><code>min_bounds</code></dt>
+<dt><code>max_bounds</code></dt>
+<dt><code>min_char_or_byte2</code></dt>
+<dt><code>max_char_or_byte2</code></dt>
+<dt><code>default_char</code></dt>
+<dt><code>draw_direction</code></dt>
+<dt><code>min_byte1</code></dt>
+<dt><code>max_byte1</code></dt>
+<dt><code>all_chars_exist</code></dt>
+<dt><code>font_ascent</code></dt>
+<dt><code>font_descent</code></dt>
+<dt><code>replies_hint</code></dt>
+<dd><p>See the description of XFontStruct in XGetFontProperty(3X11) for details
+on these values.
+</p>
+</dd>
+<dt><code>properties</code></dt>
+<dd><p>A list of properties.  Each entry has two attributes:
+</p>
+<dl compact="compact">
+<dt><code>name</code></dt>
+<dd><p>The atom identifying this property.
+</p>
+</dd>
+<dt><code>value</code></dt>
+<dd><p>A 32-bit unsigned value.
+</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005ffont_005fpath-on-Display"></a>Method on Display: <strong>set_font_path</strong><em> ( path, onerror = None )</em></dt>
+<dd>
+<p>Set the font path to <var>path</var>, which should be a list of strings.  If
+<var>path</var> is empty, the default font path of the server will be
+restored.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005ffont_005fpath-on-Display"></a>Method on Display: <strong>get_font_path</strong><em> ( )</em></dt>
+<dd>
+<p>Return the current font path as a list of strings.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-query_005fextension-on-Display"></a>Method on Display: <strong>query_extension</strong><em> ( name )</em></dt>
+<dd>
+<p>Ask the server if it supports the extension <var>name</var>.  If it is
+supported an object with the following attributes is returned:
+</p>
+<dl compact="compact">
+<dt><code>major_opcode</code></dt>
+<dd><p>The major opcode that the requests of this extension uses.
+</p>
+</dd>
+<dt><code>first_event</code></dt>
+<dd><p>The base event code if the extension have additional events, or 0.
+</p>
+</dd>
+<dt><code>first_error</code></dt>
+<dd><p>The base error code if the extension have additional errors, or 0.
+</p>
+</dd>
+</dl>
+
+<p>If the extension is not supported, <code>None</code> is returned.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-list_005fextensions-on-Display"></a>Method on Display: <strong>list_extensions</strong><em> ( )</em></dt>
+<dd>
+<p>Return a list of all the extensions provided by the server.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-change_005fkeyboard_005fmapping-on-Display"></a>Method on Display: <strong>change_keyboard_mapping</strong><em> ( first_keycode, keysyms, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Modify the keyboard mapping, starting with <var>first_keycode</var>.
+<var>keysyms</var> is a list of tuples of keysyms.  <code>keysyms[n][i]</code> will
+be assigned to keycode <code>first_keycode+n</code> at index <code>i</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fkeyboard_005fmapping-on-Display"></a>Method on Display: <strong>get_keyboard_mapping</strong><em> ( first_keycode, count )</em></dt>
+<dd>
+<p>Return the current keyboard mapping as a list of tuples, starting at
+<var>first_keycount</var> and no more than <var>count</var>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-change_005fkeyboard_005fcontrol-on-Display"></a>Method on Display: <strong>change_keyboard_control</strong><em> ( onerror&nbsp;=&nbsp;None, **keys )</em></dt>
+<dd>
+<p>Change the parameters provided as keyword arguments:
+</p>
+<dl compact="compact">
+<dt><code>key_click_percent</code></dt>
+<dd><p>The volume of key clicks between 0 (off) and 100 (load).  -1 will restore
+default setting.
+</p>
+</dd>
+<dt><code>bell_percent</code></dt>
+<dd><p>The base volume of the bell, coded as above.
+</p>
+</dd>
+<dt><code>bell_pitch</code></dt>
+<dd><p>The pitch of the bell in Hz, -1 restores the default.
+</p>
+</dd>
+<dt><code>bell_duration</code></dt>
+<dd><p>The duration of the bell in milliseconds, -1 restores the default.
+</p>
+</dd>
+<dt><code>led</code></dt>
+<dt><code>led_mode</code></dt>
+<dd><p><code>led_mode</code> should be <code>X.LedModeOff</code> or <code>X.LedModeOn</code>.  If
+<code>led</code> is provided, it should be a 32-bit mask listing the LEDs that
+should change.  If <code>led</code> is not provided, all LEDs are changed.
+</p>
+</dd>
+<dt><code>key</code></dt>
+<dt><code>auto_repeat_mode</code></dt>
+<dd><p><code>auto_repeat_mode</code> should be one of <code>X.AutoRepeatModeOff</code>,
+<code>X.AutoRepeatModeOn</code>, or <code>X.AutoRepeatModeDefault</code>.  If
+<code>key</code> is provided, that key will be modified, otherwise the global
+state for the entire keyboard will be modified.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+<dl>
+<dt><a name="index-get_005fkeyboard_005fcontrol-on-Display"></a>Method on Display: <strong>get_keyboard_control</strong><em> ( )</em></dt>
+<dd>
+<p>Return an object with the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>global_auto_repeat</code></dt>
+<dd><p><code>X.AutoRepeatModeOn</code> or <code>X.AutoRepeatModeOff</code>.
+</p>
+</dd>
+<dt><code>auto_repeats</code></dt>
+<dd><p>A list of 32 integers.  List item N contains the bits for keys 8N to 8N
++ 7 with the least significant bit in the byte representing key 8N.  If
+a bit is on, autorepeat is enabled for the corresponding key.
+</p>
+</dd>
+<dt><code>led_mask</code></dt>
+<dd><p>A 32-bit mask indicating which LEDs are on.
+</p>
+</dd>
+<dt><code>key_click_percent</code></dt>
+<dd><p>The volume of key click, from 0 to 100.
+</p>
+</dd>
+<dt><code>bell_percent</code></dt>
+<dt><code>bell_pitch</code></dt>
+<dt><code>bell_duration</code></dt>
+<dd><p>The volume, pitch and duration of the bell.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-bell-on-Display"></a>Method on Display: <strong>bell</strong><em> ( percent = 0, onerror = None )</em></dt>
+<dd>
+<p>Ring the bell at the volume <var>percent</var> which is relative the base
+volume.  See XBell(3X11).
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-change_005fpointer_005fcontrol-on-Display"></a>Method on Display: <strong>change_pointer_control</strong><em> ( accel&nbsp;=&nbsp;None, threshold&nbsp;=&nbsp;None, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>To change the pointer acceleration, set <var>accel</var> to a tuple
+<code>(num, denum)</code>.  The pointer will then move <code>num/denum</code> times
+the normal speed if it moves beyond the threshold number of pixels at
+once.  To change the threshold, set it to the number of pixels.  -1
+restores the default.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fpointer_005fcontrol-on-Display"></a>Method on Display: <strong>get_pointer_control</strong><em> ( )</em></dt>
+<dd>
+<p>Return an object with the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>accel_num</code></dt>
+<dt><code>accel_denom</code></dt>
+<dd><p>The acceleration as numerator/denumerator.
+</p>
+</dd>
+<dt><code>threshold</code></dt>
+<dd><p>The number of pixels the pointer must move before the acceleration kicks
+in.
+</p>
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fscreen_005fsaver-on-Display"></a>Method on Display: <strong>set_screen_saver</strong><em> ( timeout, interval, prefer_blank, allow_exposures, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>See XSetScreenSaver(3X11).
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fscreen_005fsaver-on-Display"></a>Method on Display: <strong>get_screen_saver</strong><em> ( )</em></dt>
+<dd>
+<p>Return an object with the attributes <code>timeout</code>, <code>interval</code>,
+<code>prefer_blanking</code>, <code>allow_exposures</code>.  See
+XGetScreenSaver(3X11) for details.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-change_005fhosts-on-Display"></a>Method on Display: <strong>change_hosts</strong><em> ( mode, host_family, host, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p><var>mode</var> is either <code>X.HostInsert</code> or <code>X.HostDelete</code>.
+<var>host_family</var> is one of <code>X.FamilyInternet</code>,
+<code>X.FamilyDECnet</code> or <code>X.FamilyChaos</code>.
+</p>
+<p><var>host</var> is a list of bytes.  For the Internet family, it should be
+the four bytes of an IPv4 address.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-list_005fhosts-on-Display"></a>Method on Display: <strong>list_hosts</strong><em> ( )</em></dt>
+<dd>
+<p>Return an object with the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>mode</code></dt>
+<dd><p><code>X.EnableAccess</code> if the access control list is used,
+<code>X.DisableAccess</code> otherwise.
+</p>
+</dd>
+<dt><code>hosts</code></dt>
+<dd><p>The hosts on the access list.  Each entry has the following attributes:
+</p>
+<dl compact="compact">
+<dt><code>family</code></dt>
+<dd><p><code>X.FamilyInternet</code>, <code>X.FamilyDECnet</code>, or <code>X.FamilyChaos</code>.
+</p>
+</dd>
+<dt><code>name</code></dt>
+<dd><p>A list of byte values, the coding depends on <code>family</code>.  For the
+Internet family, it is the 4 bytes of an IPv4 address. 
+</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005faccess_005fcontrol-on-Display"></a>Method on Display: <strong>set_access_control</strong><em> ( mode, onerror = None )</em></dt>
+<dd>
+<p>Enable use of access control lists at connection setup if <var>mode</var> is
+<code>X.EnableAccess</code>, disable if it is <code>X.DisableAccess</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fclose_005fdown_005fmode-on-Display"></a>Method on Display: <strong>set_close_down_mode</strong><em> ( mode, onerror = None )</em></dt>
+<dd>
+<p>Control what will happen with the client&rsquo;s resources at connection
+close.  The default is <code>X.DestroyAll</code>, the other values are
+<code>X.RetainPermanent</code> and <code>X.RetainTemporary</code>.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-force_005fscreen_005fsaver-on-Display"></a>Method on Display: <strong>force_screen_saver</strong><em> ( mode, onerror = None )</em></dt>
+<dd>
+<p>If <var>mode</var> is <code>X.ScreenSaverActive</code> the screen saver is
+activated.  If it is <code>X.ScreenSaverReset</code>, the screen saver is
+deactivated as if device input had been received.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fpointer_005fmapping-on-Display"></a>Method on Display: <strong>set_pointer_mapping</strong><em> ( map )</em></dt>
+<dd>
+<p>Set the mapping of the pointer buttons.  <var>map</var> is a list of logical
+button numbers.  <var>map</var> must be of the same length as the list
+returned by <code>Display.get_pointer_mapping()</code>.
+</p>
+<p><code>map[n]</code> sets the logical number for the physical button
+<code>n+1</code>.  Logical number 0 disables the button.  Two physical buttons
+cannot be mapped to the same logical number.
+</p>
+<p>If one of the buttons to be altered are logically in the down state,
+<code>X.MappingBusy</code> is returned and the mapping is not changed.
+Otherwise the mapping is changed and <code>X.MappingSuccess</code> is returned.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-get_005fpointer_005fmapping-on-Display"></a>Method on Display: <strong>get_pointer_mapping</strong><em> ( )</em></dt>
+<dd>
+<p>Return a list of the pointer button mappings.  Entry N in the list sets
+the logical button number for the physical button N+1.
+</p>
+</dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fmodifier_005fmapping-on-Display"></a>Method on Display: <strong>set_modifier_mapping</strong><em> ( keycodes )</em></dt>
+<dd>
+<p>Set the keycodes for the eight modifiers <code>X.Shift</code>, <code>X.Lock</code>,
+<code>X.Control</code>, <code>X.Mod1</code>, <code>X.Mod2</code>, <code>X.Mod3</code>,
+<code>X.Mod4</code> and <code>X.Mod5</code>.  <var>keycodes</var> should be a
+eight-element list where each entry is a list of the keycodes that
+should be bound to that modifier.
+</p>
+<p>If any changed key is logically in the down state, <code>X.MappingBusy</code>
+is returned and the mapping is not changed.  If the mapping violates
+some server restriction, <code>X.MappingFailed</code> is returned.  Otherwise
+the mapping is changed and <code>X.MappingSuccess</code> is returned.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-get_005fmodifier_005fmapping-on-Display"></a>Method on Display: <strong>get_modifier_mapping</strong><em> ( )</em></dt>
+<dd>
+<p>Return a list of eight lists, one for each modifier.  The list can be
+indexed using <code>X.ShiftMapIndex</code>, <code>X.Mod1MapIndex</code>, and so on.
+The sublists list the keycodes bound to that modifier.
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-no_005foperation-on-Display"></a>Method on Display: <strong>no_operation</strong><em> ( onerror = None )</em></dt>
+<dd>
+<p>Do nothing but send a request to the server.
+</p>
+</dd></dl>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_16.html#Resource" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

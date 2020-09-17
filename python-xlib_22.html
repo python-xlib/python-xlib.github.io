@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 6.8 Fontable</title>
+
+<meta name="description" content="The Python X Library: 6.8 Fontable">
+<meta name="keywords" content="The Python X Library: 6.8 Fontable">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Fontable"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_21.html#Pixmap" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_23.html#GC" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Fontable-1"></a>
+<h2 class="section">6.8 Fontable</h2>
+
+<p><code>Fontable</code> is a base class of <code>GC</code> and <code>Font</code>
+objects.  See section <a href="python-xlib_23.html#GC">GC</a>, and <a href="python-xlib_24.html#Font">Font</a>.
+</p>
+<p>See section <a href="python-xlib_16.html#Resource">Resource</a>, for additional methods.
+</p>
+<dl>
+<dt><a name="index-query-on-Fontable"></a>Method on Fontable: <strong>query</strong><em> ( )</em></dt>
+<dd><p>Returns
+Object(&rsquo;min_bounds&rsquo;, structs.CharInfo),
+Object(&rsquo;max_bounds&rsquo;, structs.CharInfo),
+Card16(&rsquo;min_char_or_byte2&rsquo;),
+Card16(&rsquo;max_char_or_byte2&rsquo;),
+Card16(&rsquo;default_char&rsquo;),
+Card8(&rsquo;draw_direction&rsquo;),
+Card8(&rsquo;min_byte1,&rsquo;),
+Card8(&rsquo;max_byte1,&rsquo;),
+Card8(&rsquo;all_chars_exist&rsquo;),
+Int16(&rsquo;font_ascent&rsquo;),
+Int16(&rsquo;font_descent&rsquo;),
+List(&rsquo;properties&rsquo;, structs.FontProp),
+List(&rsquo;char_infos&rsquo;, structs.CharInfo),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-query_005ftext_005fextents-on-Fontable"></a>Method on Fontable: <strong>query_text_extents</strong><em> ( string )</em></dt>
+<dd><p>Returns
+Card8(&rsquo;draw_direction&rsquo;),
+Int16(&rsquo;font_ascent&rsquo;),
+Int16(&rsquo;font_descent&rsquo;),
+Int16(&rsquo;overall_ascent&rsquo;),
+Int16(&rsquo;overall_descent&rsquo;),
+Int32(&rsquo;overall_width&rsquo;),
+Int32(&rsquo;overall_left&rsquo;),
+Int32(&rsquo;overall_right&rsquo;),
+</p></dd></dl>
+
+
+<hr>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

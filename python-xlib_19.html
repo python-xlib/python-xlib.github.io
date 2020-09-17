@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 6.5 Drawable</title>
+
+<meta name="description" content="The Python X Library: 6.5 Drawable">
+<meta name="keywords" content="The Python X Library: 6.5 Drawable">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Drawable"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_18.html#Cursor" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_20.html#Window" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Drawable-1"></a>
+<h2 class="section">6.5 Drawable</h2>
+
+<p><code>Drawable</code> is a base class of <code>Window</code> and <code>Pixmap</code>
+objects.  See section <a href="python-xlib_20.html#Window">Window</a>, and <a href="python-xlib_21.html#Pixmap">Pixmap</a>.
+</p>
+<p>See section <a href="python-xlib_16.html#Resource">Resource</a>, for additional methods.
+</p>
+<dl>
+<dt><a name="index-get_005fgeometry-on-Drawable"></a>Method on Drawable: <strong>get_geometry</strong><em> ( )</em></dt>
+<dd><p>Returns
+Window(&rsquo;root&rsquo;),
+Int16(&rsquo;x&rsquo;),
+Int16(&rsquo;y&rsquo;),
+Card16(&rsquo;width&rsquo;),
+Card16(&rsquo;height&rsquo;),
+Card16(&rsquo;border_width&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-create_005fpixmap-on-Drawable"></a>Method on Drawable: <strong>create_pixmap</strong><em> ( width, height, depth )</em></dt>
+<dd><p>Returns Pixmap.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-create_005fgc-on-Drawable"></a>Method on Drawable: <strong>create_gc</strong><em> ( **keys )</em></dt>
+<dd><p>Returns GC.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-copy_005farea-on-Drawable"></a>Method on Drawable: <strong>copy_area</strong><em> ( gc, src_drawable, src_x, src_y, width, height, dst_x, dst_y, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-copy_005fplane-on-Drawable"></a>Method on Drawable: <strong>copy_plane</strong><em> ( gc, src_drawable, src_x, src_y, width, height, dst_x, dst_y, bit_plane, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005fpoint-on-Drawable"></a>Method on Drawable: <strong>poly_point</strong><em> ( gc, coord_mode, points, onerror = None )</em></dt>
+</dl>
+<p>request.PolyPoint(display = self.display,
+onerror = onerror,
+coord_mode = coord_mode,
+drawable = self.id,
+gc = gc,
+points = points)
+</p>
+<dl>
+<dt><a name="index-point-on-Drawable"></a>Method on Drawable: <strong>point</strong><em> ( gc, x, y, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005fline-on-Drawable"></a>Method on Drawable: <strong>poly_line</strong><em> ( gc, coord_mode, points, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-line-on-Drawable"></a>Method on Drawable: <strong>line</strong><em> ( gc, x1, y1, x2, y2, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005fsegment-on-Drawable"></a>Method on Drawable: <strong>poly_segment</strong><em> ( gc, segments, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005frectangle-on-Drawable"></a>Method on Drawable: <strong>poly_rectangle</strong><em> ( gc, rectangles, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-rectangle-on-Drawable"></a>Method on Drawable: <strong>rectangle</strong><em> ( gc, x, y, width, height, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005farc-on-Drawable"></a>Method on Drawable: <strong>poly_arc</strong><em> ( gc, arcs, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-arc-on-Drawable"></a>Method on Drawable: <strong>arc</strong><em> ( gc, x, y, width, height, angle1, angle2, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-fill_005fpoly-on-Drawable"></a>Method on Drawable: <strong>fill_poly</strong><em> ( gc, shape, coord_mode, points, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005ffill_005frectangle-on-Drawable"></a>Method on Drawable: <strong>poly_fill_rectangle</strong><em> ( gc, rectangles, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-fill_005frectangle-on-Drawable"></a>Method on Drawable: <strong>fill_rectangle</strong><em> ( gc, x, y, width, height, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005ffill_005farc-on-Drawable"></a>Method on Drawable: <strong>poly_fill_arc</strong><em> ( gc, arcs, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-fill_005farc-on-Drawable"></a>Method on Drawable: <strong>fill_arc</strong><em> ( gc, x, y, width, height, angle1, angle2, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-put_005fimage-on-Drawable"></a>Method on Drawable: <strong>put_image</strong><em> ( )</em></dt>
+<dd><p>Not implemented yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-get_005fimage-on-Drawable"></a>Method on Drawable: <strong>get_image</strong><em> ( )</em></dt>
+<dd><p>Not implemented yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-draw_005ftext-on-Drawable"></a>Method on Drawable: <strong>draw_text</strong><em> ( gc, x, y, text, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005ftext-on-Drawable"></a>Method on Drawable: <strong>poly_text</strong><em> ( gc, x, y, items, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-poly_005ftext_005f16-on-Drawable"></a>Method on Drawable: <strong>poly_text_16</strong><em> ( gc, x, y, items, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-image_005ftext-on-Drawable"></a>Method on Drawable: <strong>image_text</strong><em> ( gc, x, y, string, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-image_005ftext_005f16-on-Drawable"></a>Method on Drawable: <strong>image_text_16</strong><em> ( gc, x, y, string, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-query_005fbest_005fsize-on-Drawable"></a>Method on Drawable: <strong>query_best_size</strong><em> ( item_class, width, height )</em></dt>
+<dd><p>Returns
+Card16(&rsquo;width&rsquo;),
+Card16(&rsquo;height&rsquo;),
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_18.html#Cursor" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_20.html#Window" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

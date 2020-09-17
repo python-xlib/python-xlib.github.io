@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 6.6 Window</title>
+
+<meta name="description" content="The Python X Library: 6.6 Window">
+<meta name="keywords" content="The Python X Library: 6.6 Window">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Window"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_19.html#Drawable" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_21.html#Pixmap" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Window-1"></a>
+<h2 class="section">6.6 Window</h2>
+
+<p><code>Window</code> objects have additional objects, see <a href="python-xlib_16.html#Resource">Resource</a> and <a href="python-xlib_19.html#Drawable">Drawable</a>.
+</p>
+<dl>
+<dt><a name="index-create_005fwindow-on-Window"></a>Method on Window: <strong>create_window</strong><em> ( x, y, width, height, border_width, depth, window_class = X.CopyFromParent, visual = X.CopyFromParent, **keys )</em></dt>
+<dd><p>Returns Window
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-change_005fattributes-on-Window"></a>Method on Window: <strong>change_attributes</strong><em> ( onerror = None, **keys )</em></dt>
+</dl>
+
+
+<dl>
+<dt><a name="index-get_005fattributes-on-Window"></a>Method on Window: <strong>get_attributes</strong><em> ( )</em></dt>
+<dd><p>Returns
+Card8(&rsquo;backing_store&rsquo;),
+Card32(&rsquo;visual&rsquo;),
+Card16(&rsquo;class&rsquo;),
+Card8(&rsquo;bit_gravity&rsquo;),
+Card8(&rsquo;win_gravity&rsquo;),
+Card32(&rsquo;backing_bit_planes&rsquo;),
+Card32(&rsquo;backing_pixel&rsquo;),
+Card8(&rsquo;save_under&rsquo;),
+Card8(&rsquo;map_is_installed&rsquo;),
+Card8(&rsquo;map_state&rsquo;),
+Card8(&rsquo;override_redirect&rsquo;),
+Colormap(&rsquo;colormap&rsquo;, (X.NONE, )),
+Card32(&rsquo;all_event_masks&rsquo;),
+Card32(&rsquo;your_event_mask&rsquo;),
+Card16(&rsquo;do_not_propagate_mask&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-destroy-on-Window"></a>Method on Window: <strong>destroy</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-destroy_005fsub_005fwindows-on-Window"></a>Method on Window: <strong>destroy_sub_windows</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-change_005fsave_005fset-on-Window"></a>Method on Window: <strong>change_save_set</strong><em> ( mode, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-reparent-on-Window"></a>Method on Window: <strong>reparent</strong><em> ( parent, x, y, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-map-on-Window"></a>Method on Window: <strong>map</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-map_005fsub_005fwindows-on-Window"></a>Method on Window: <strong>map_sub_windows</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-unmap-on-Window"></a>Method on Window: <strong>unmap</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-unmap_005fsub_005fwindows-on-Window"></a>Method on Window: <strong>unmap_sub_windows</strong><em> ( onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-configure-on-Window"></a>Method on Window: <strong>configure</strong><em> ( onerror = None, **keys )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-circulate-on-Window"></a>Method on Window: <strong>circulate</strong><em> ( direction, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-query_005ftree-on-Window"></a>Method on Window: <strong>query_tree</strong><em> ( )</em></dt>
+<dd><p>Returns
+Window(&rsquo;root&rsquo;),
+Window(&rsquo;parent&rsquo;, (X.NONE, )),
+List(&rsquo;children&rsquo;, WindowObj),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-change_005fproperty-on-Window"></a>Method on Window: <strong>change_property</strong><em> ( property, type, format, data, mode = X.PropModeReplace, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-delete_005fproperty-on-Window"></a>Method on Window: <strong>delete_property</strong><em> ( property, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fproperty-on-Window"></a>Method on Window: <strong>get_property</strong><em> ( property, type, offset, length, delete = 0 )</em></dt>
+<dd><p>Returns None or 
+Card32(&rsquo;property_type&rsquo;),
+Card8(&rsquo;format&rsquo;),
+PropertyData(&rsquo;value&rsquo;),
+Card32(&rsquo;bytes_after&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-get_005ffull_005fproperty-on-Window"></a>Method on Window: <strong>get_full_property</strong><em> ( property, type, sizehint = 10 )</em></dt>
+<dd><p>Returns None or 
+Card32(&rsquo;property_type&rsquo;),
+Card8(&rsquo;format&rsquo;),
+PropertyData(&rsquo;value&rsquo;),
+Card32(&rsquo;bytes_after&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-list_005fproperties-on-Window"></a>Method on Window: <strong>list_properties</strong><em> ( )</em></dt>
+<dd><p>Returns List(&rsquo;atoms&rsquo;, Card32Obj),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fselection_005fowner-on-Window"></a>Method on Window: <strong>set_selection_owner</strong><em> ( selection, time, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-convert_005fselection-on-Window"></a>Method on Window: <strong>convert_selection</strong><em> ( selection, target, property, time, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-send_005fevent-on-Window-1"></a>Method on Window: <strong>send_event</strong><em> ( event, event_mask = 0, propagate = 0, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-grab_005fpointer-on-Window"></a>Method on Window: <strong>grab_pointer</strong><em> ( owner_events, event_mask, pointer_mode, keyboard_mode, confine_to, cursor, time )</em></dt>
+<dd><p>Returns Card8(&rsquo;status&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-grab_005fbutton-on-Window"></a>Method on Window: <strong>grab_button</strong><em> ( button, modifiers, owner_events, event_mask, pointer_mode, keyboard_mode, confine_to, cursor, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ungrab_005fbutton-on-Window"></a>Method on Window: <strong>ungrab_button</strong><em> ( button, modifiers, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-grab_005fkeyboard-on-Window"></a>Method on Window: <strong>grab_keyboard</strong><em> ( owner_events, pointer_mode, keyboard_mode, time )</em></dt>
+<dd><p>Returns Card8(&rsquo;status&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-grab_005fkey-on-Window"></a>Method on Window: <strong>grab_key</strong><em> ( key, modifiers, owner_events, pointer_mode, keyboard_mode, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-ungrab_005fkey-on-Window"></a>Method on Window: <strong>ungrab_key</strong><em> ( key, modifiers, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-query_005fpointer-on-Window"></a>Method on Window: <strong>query_pointer</strong><em> ( )</em></dt>
+<dd><p>Returns
+Card8(&rsquo;same_screen&rsquo;),
+Window(&rsquo;root&rsquo;),
+Window(&rsquo;child&rsquo;, (X.NONE, )),
+Int16(&rsquo;root_x&rsquo;),
+Int16(&rsquo;root_y&rsquo;),
+Int16(&rsquo;win_x&rsquo;),
+Int16(&rsquo;win_y&rsquo;),
+Card16(&rsquo;mask&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-get_005fmotion_005fevents-on-Window"></a>Method on Window: <strong>get_motion_events</strong><em> ( start, stop )</em></dt>
+<dd><p>Returns List(&rsquo;events&rsquo;, structs.TimeCoord),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-translate_005fcoords-on-Window"></a>Method on Window: <strong>translate_coords</strong><em> ( src_window, src_x, src_y )</em></dt>
+<dd><p>Returns
+Window(&rsquo;child&rsquo;, (X.NONE, )),
+Int16(&rsquo;x&rsquo;),
+Int16(&rsquo;y&rsquo;),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-warp_005fpointer-on-Window"></a>Method on Window: <strong>warp_pointer</strong><em> ( x, y, src_window = 0, src_x = 0, src_y = 0, src_width = 0, src_height = 0, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-set_005finput_005ffocus-on-Window"></a>Method on Window: <strong>set_input_focus</strong><em> ( revert_to, time, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-clear_005farea-on-Window"></a>Method on Window: <strong>clear_area</strong><em> ( x = 0, y = 0, width = 0, height = 0, exposures = 0, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-create_005fcolormap-on-Window"></a>Method on Window: <strong>create_colormap</strong><em> ( visual, alloc )</em></dt>
+<dd><p>Returns Colormap.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-list_005finstalled_005fcolormaps-on-Window"></a>Method on Window: <strong>list_installed_colormaps</strong><em> ( )</em></dt>
+<dd><p>Returns List(&rsquo;cmaps&rsquo;, ColormapObj),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-rotate_005fproperties-on-Window"></a>Method on Window: <strong>rotate_properties</strong><em> ( properties, delta, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fname-on-Window"></a>Method on Window: <strong>set_wm_name</strong><em> ( name, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fname-on-Window"></a>Method on Window: <strong>get_wm_name</strong><em> ( )</em></dt>
+<dd><p>Returns None or string.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005ficon_005fname-on-Window"></a>Method on Window: <strong>set_wm_icon_name</strong><em> ( name, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005ficon_005fname-on-Window"></a>Method on Window: <strong>get_wm_icon_name</strong><em> ( )</em></dt>
+<dd><p>Returns None or string.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fclass-on-Window"></a>Method on Window: <strong>set_wm_class</strong><em> ( inst, cls, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fclass-on-Window"></a>Method on Window: <strong>get_wm_class</strong><em> ( )</em></dt>
+<dd><p>Returns None or (isntance, class)
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005ftransient_005ffor-on-Window"></a>Method on Window: <strong>set_wm_transient_for</strong><em> ( window, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005ftransient_005ffor-on-Window"></a>Method on Window: <strong>get_wm_transient_for</strong><em> ( )</em></dt>
+<dd><p>Returns None or Window.
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fwm_005fprotocols-on-Window"></a>Method on Window: <strong>set_wm_protocols</strong><em> ( protocols, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fprotocols-on-Window"></a>Method on Window: <strong>get_wm_protocols</strong><em> ( )</em></dt>
+<dd><p>Returns list of atoms.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fcolormap_005fwindows-on-Window"></a>Method on Window: <strong>set_wm_colormap_windows</strong><em> ( windows, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fcolormap_005fwindows-on-Window"></a>Method on Window: <strong>get_wm_colormap_windows</strong><em> ( )</em></dt>
+<dd><p>Returns list of Windows.
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-set_005fwm_005fclient_005fmachine-on-Window"></a>Method on Window: <strong>set_wm_client_machine</strong><em> ( name, onerror = None )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fclient_005fmachine-on-Window"></a>Method on Window: <strong>get_wm_client_machine</strong><em> ( )</em></dt>
+<dd><p>Returns None or string.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fnormal_005fhints-on-Window"></a>Method on Window: <strong>set_wm_normal_hints</strong><em> ( hints = , onerror = None, **keys )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fnormal_005fhints-on-Window"></a>Method on Window: <strong>get_wm_normal_hints</strong><em> ( )</em></dt>
+<dd><p>Returns  Card32(&rsquo;flags&rsquo;),
+Int32(&rsquo;min_width&rsquo;, default = 0),
+Int32(&rsquo;min_height&rsquo;, default = 0),
+Int32(&rsquo;max_width&rsquo;, default = 0),
+Int32(&rsquo;max_height&rsquo;, default = 0),
+Int32(&rsquo;width_inc&rsquo;, default = 0),
+Int32(&rsquo;height_inc&rsquo;, default = 0),
+Object(&rsquo;min_aspect&rsquo;, Aspect, default = (0, 0)),
+Object(&rsquo;max_aspect&rsquo;, Aspect, default = (0, 0)),
+Int32(&rsquo;base_width&rsquo;, default = 0),
+Int32(&rsquo;base_height&rsquo;, default = 0),
+Int32(&rsquo;win_gravity&rsquo;, default = 0),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fhints-on-Window"></a>Method on Window: <strong>set_wm_hints</strong><em> ( hints = , onerror = None, **keys )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fhints-on-Window"></a>Method on Window: <strong>get_wm_hints</strong><em> ( )</em></dt>
+<dd><p>Returns Card32(&rsquo;flags&rsquo;),
+Card32(&rsquo;input&rsquo;, default = 0),
+Set(&rsquo;initial_state&rsquo;, 4,
+( Xutil.NormalState, Xutil.IconicState ),
+default = Xutil.NormalState),
+Pixmap(&rsquo;icon_pixmap&rsquo;, default = 0),
+Window(&rsquo;icon_window&rsquo;, default = 0),
+Int32(&rsquo;icon_x&rsquo;, default = 0),
+Int32(&rsquo;icon_y&rsquo;, default = 0),
+Pixmap(&rsquo;icon_mask&rsquo;, default = 0),
+Window(&rsquo;window_group&rsquo;, default = 0),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005fstate-on-Window"></a>Method on Window: <strong>set_wm_state</strong><em> ( hints = , onerror = None, **keys )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005fstate-on-Window"></a>Method on Window: <strong>get_wm_state</strong><em> ( )</em></dt>
+<dd><p>Returns  Set(&rsquo;state&rsquo;, 4,
+( Xutil.WithdrawnState,
+Xutil.NormalState,
+Xutil.IconicState )),
+Window(&rsquo;icon&rsquo;, ( X.NONE, )),
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-set_005fwm_005ficon_005fsize-on-Window"></a>Method on Window: <strong>set_wm_icon_size</strong><em> ( hints = , onerror = None, **keys )</em></dt>
+</dl>
+
+<dl>
+<dt><a name="index-get_005fwm_005ficon_005fsize-on-Window"></a>Method on Window: <strong>get_wm_icon_size</strong><em> ( )</em></dt>
+<dd><p>Returns Card32(&rsquo;min_width&rsquo;),
+Card32(&rsquo;min_height&rsquo;),
+Card32(&rsquo;max_width&rsquo;),
+Card32(&rsquo;max_height&rsquo;),
+Card32(&rsquo;width_inc&rsquo;),
+Card32(&rsquo;height_inc&rsquo;),
+</p></dd></dl>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_19.html#Drawable" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_21.html#Pixmap" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

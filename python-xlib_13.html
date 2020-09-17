@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on September 16, 2020 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>The Python X Library: 5.4 Sending Events</title>
+
+<meta name="description" content="The Python X Library: 5.4 Sending Events">
+<meta name="keywords" content="The Python X Library: 5.4 Sending Events">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Sending-Events"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_12.html#Event-Types" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Sending-Events-1"></a>
+<h2 class="section">5.4 Sending Events</h2>
+
+<p>Clients can send events to each other.  Most often these are
+general-purpose <code>ClientMessage</code> events, but any event type can be
+sent.
+</p>
+<p>To send an event, an event object must be created.  This is done by
+instantiating an event class, providing values to all its fields as
+keyword parameters.  The event is then sent with the <code>send_event()</code>
+method:
+</p>
+<dl>
+<dt><a name="index-send_005fevent-on-Window"></a>Method on Window: <strong>send_event</strong><em> ( event, event_mask = 0, propagate = 0, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Send <var>event</var> to this window.
+</p>
+<p>If <var>event_mask</var> is 0, the event is sent to the client that created
+the window.  Otherwise the event is sent to every client selecting any
+of the event types in <var>event_mask</var>.
+</p>
+<p>If no clients have selected any of the event types and <var>propagate</var>
+is true, the X server will search for an ancestor of this window on
+which some client has selected any of the event types.  For details, see
+XSendEvent(3X11).
+</p>
+</dd></dl>
+
+<dl>
+<dt><a name="index-send_005fevent-on-Display"></a>Method on Display: <strong>send_event</strong><em> ( destination, event, <span class="nolinebreak">event_mask</span>&nbsp;=&nbsp;0, propagate&nbsp;=&nbsp;0, onerror&nbsp;=&nbsp;None&nbsp;)</em></dt>
+<dd>
+<p>Send <var>event</var> to <var>destination</var>, which can either be a
+<code>Window</code> object or a constant:  If <code>X.PointerWindow</code> is
+specified, send the event to the window the pointer is in. If
+<code>X.InputFocus</code> is specified and the focus window contains the
+pointer, send the event to the window that the pointer is in.
+Otherwise, send the event to the focus window.
+</p>
+</dd></dl>
+
+
+<p>As an example, this creates and sends a <code>ClientMessage</code> event of
+the client specific type <code>HELLO_WORLD</code> (an atom), to the window
+<code>dest</code> and with the 8-bitformat value <code>&quot;G'day, mate&quot;</code> (which
+must be exactly twenty bytes):
+</p>
+<div class="example">
+<pre class="example">cm_event = Xlib.protocol.event.ClientMessage(
+    window = dest,
+    client_type = HELLO_WORLD,
+    data = (8, &quot;G'day mate\0\0\0\0\0\0\0\0\0\0&quot;))
+
+dest.send_event(cm_event)
+</pre></div>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_12.html#Event-Types" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_9.html#Event-Handling" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_14.html#X-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="python-xlib.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="python-xlib_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="python-xlib_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September 16, 2020</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
